@@ -1,0 +1,2 @@
+class JobSubmission < ApplicationRecord
+end
