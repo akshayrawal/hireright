@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_13_154746) do
+ActiveRecord::Schema.define(version: 2018_10_13_161151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,9 +31,24 @@ ActiveRecord::Schema.define(version: 2018_10_13_154746) do
     t.boolean "supremacy_arrogance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "recruiter_id"
+    t.index ["recruiter_id"], name: "index_job_posts_on_recruiter_id"
   end
 
   create_table "job_submissions", force: :cascade do |t|
+    t.string "name"
+    t.string "linkedin_profile"
+    t.boolean "creative_passionate"
+    t.boolean "critical_cynical"
+    t.boolean "defensive_anxious"
+    t.boolean "friendly_warm"
+    t.boolean "hostile_angry"
+    t.boolean "leadership_charisma"
+    t.boolean "loneliness_unfulfillment"
+    t.boolean "love_happiness"
+    t.boolean "sadness_sorrow"
+    t.boolean "selfcontrol_practicality"
+    t.boolean "supremacy_arrogance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,4 +65,5 @@ ActiveRecord::Schema.define(version: 2018_10_13_154746) do
     t.index ["reset_password_token"], name: "index_recruiters_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "job_posts", "recruiters"
 end
